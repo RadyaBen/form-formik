@@ -1,33 +1,8 @@
-import { Formik, Field, Form, ErrorMessage, useField } from 'formik';
+import { Formik, Field, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-const MyTextInput = ({ label, ...props }) => {
-	const [field, meta] = useField(props);
-	return (
-		<>
-			<label htmlFor={props.name}>{label}</label>
-			<input {...field} {...props} />
-			{meta.touched && meta.error ? (
-				<div className="error">{meta.error}</div>
-			) : null}
-		</>
-	);
-};
-
-const MyCheckbox = ({ children, ...props }) => {
-	const [field, meta] = useField({ ...props, type: 'checkbox' });
-	return (
-		<>
-			<label className="checkbox">
-				<input type="checkbox" {...field} {...props} />
-				{children}
-			</label>
-			{meta.touched && meta.error ? (
-				<div className="error">{meta.error}</div>
-			) : null}
-		</>
-	);
-};
+import { MyTextInput } from '../MyTextInput';
+import { MyCheckbox } from '../MyCheckbox';
 
 const CustomForm = () => {
 
@@ -61,8 +36,8 @@ const CustomForm = () => {
 			onSubmit={values => console.log(JSON.stringify(values, null, 2))}
 		>
 			<Form className="form" >
-			<h2>Send donate</h2>
-			<MyTextInput
+				<h2>Send donate</h2>
+				<MyTextInput
 					label="Your name"
 					id="name"
 					name="name"
@@ -88,10 +63,10 @@ const CustomForm = () => {
 					id="currency"
 					name="currency"
 					as="select" >
-						<option value="">Choose currency</option>
-						<option value="USD">USD</option>
-						<option value="UAH">UAH</option>
-						<option value="RUB">RUB</option>
+					<option value="">Choose currency</option>
+					<option value="USD">USD</option>
+					<option value="UAH">UAH</option>
+					<option value="RUB">RUB</option>
 				</Field>
 				<ErrorMessage className="error" name="currency" component="div" />
 				<label htmlFor="text">Your message</label>
@@ -108,7 +83,7 @@ const CustomForm = () => {
 				<button type="submit">Send</button>
 			</Form>
 		</Formik>
-	)
-}
+	);
+};
 
 export default CustomForm;
