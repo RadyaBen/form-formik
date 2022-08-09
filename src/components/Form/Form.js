@@ -86,4 +86,4 @@ const CustomForm = () => {
 	);
 };
 
-export default CustomForm;
+export { CustomForm };
