@@ -1,12 +1,13 @@
-import './app.scss';
-import CustomForm from '../Form/Form';
+import { CustomForm } from '../Form';
 
-function App() {
+import './App.scss';
+
+const App = () => {
 	return (
 		<div className="app">
 			<CustomForm />
 		</div>
 	);
-}
+};
 
-export default App;
+export { App };
